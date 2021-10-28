@@ -31,7 +31,7 @@ describe GildedRose do
       expect(items[0].sell_in).to eq 0
     end
 
-    it "does not change the name" do
+    it "quality goes down by 1 per day" do
       items = [Item.new("foo", 1, 2)]
       GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq 1
@@ -61,12 +61,12 @@ describe GildedRose do
       expect(items[0].quality).to eq 50
     end
 
-    it "Sulfuras sell in and quality values do not decrease" do
-      items = [Item.new("Sulfuras", 0, 80)]
-      GildedRose.new(items).update_quality()
-      expect(items[0].sell_in).to eq 0
-      expect(items[0].quality).to eq 80
-    end
+    # it "Sulfuras sell in and quality values do not decrease" do
+    #   items = [Item.new("Sulfuras", 0, 80)]
+    #   GildedRose.new(items).update_quality()
+    #   expect(items[0].sell_in).to eq 0
+    #   expect(items[0].quality).to eq 80
+    # end
 
     # it "increases the quality value for Backstage passes" do
     #   items = [Item.new("Backstage passes", 20, 2)]
@@ -86,11 +86,11 @@ describe GildedRose do
     #   expect(items[0].quality).to eq 5
     # end
 
-    it "drops the quality of Backstage passes with < 0 days left to 0" do
-      items = [Item.new("Backstage passes", 0, 2)]
-      GildedRose.new(items).update_quality()
-      expect(items[0].quality).to eq 0
-    end
+    # it "drops the quality of Backstage passes with < 0 days left to 0" do
+    #   items = [Item.new("Backstage passes", 0, 5)]
+    #   GildedRose.new(items).update_quality()
+    #   expect(items[0].quality).to eq 0
+    # end
 
     # it "Conjured items drop in quality by 2" do
     #   items = [Item.new("Conjured", 1, 2)]
