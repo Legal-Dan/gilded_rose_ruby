@@ -1,5 +1,5 @@
 class GildedRose
-  EXCEPTIONS = ["Aged Brie", "Sulfuras", "Backstage Passes", "Conjured"]
+  EXCEPTIONS = ["Aged Brie", "Sulfuras", "Backstage pass", "Conjured"]
   
   def initialize(items)
     @items = items
@@ -42,7 +42,8 @@ class Update
       item.sell_in -= 1
       item.quality += 1      
     elsif item.name.include?("Backstage pass")
-      puts "Back: #{item.name}"
+      item.sell_in > 0 ? item.quality += 1 : item.quality = 0
+      item.sell_in -= 1
     elsif item.name.include?("Conjured")
       puts "Conjure: #{item.name}"
     end
