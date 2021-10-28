@@ -38,8 +38,8 @@ class Update
 
   def self.update_exception(item)
     if item.name.include?("Aged Brie")
-      item.sell_in -= 1
       item.quality += 1      
+      item.sell_in -= 1
     elsif item.name.include?("Backstage pass") 
       item.quality += 1 if item.sell_in > 10
       item.quality += 2 if item.sell_in > 5 && item.sell_in <= 10
@@ -47,8 +47,11 @@ class Update
       item.quality = 0 if item.sell_in <= 0
       item.sell_in -= 1
     elsif item.name.include?("Conjured")
-      puts "Conjure: #{item.name}"
+      item.quality -= 2      
+      item.sell_in -= 1
     end
+    
     item.quality = 50 if item.quality > 50 unless item.name.include?("Sulfuras")
+    item.quality = 0 if item.quality < 0
   end
 end
