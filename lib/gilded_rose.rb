@@ -31,8 +31,7 @@ end
 
 class Update
   def self.standard_update(item)
-    item.quality -= 2 if item.sell_in <= 0
-    item.quality -= 1 if item.sell_in > 0
+    item.sell_in > 0 ? item.quality -= 1 : item.quality -= 2
     item.quality = 0 if item.quality < 0
     item.sell_in -= 1
   end
@@ -41,8 +40,10 @@ class Update
     if item.name.include?("Aged Brie")
       item.sell_in -= 1
       item.quality += 1      
-    elsif item.name.include?("Backstage pass")
-      item.sell_in > 10 ? item.quality += 1 : item.quality += 2
+    elsif item.name.include?("Backstage pass") 
+      item.quality += 1 if item.sell_in > 10
+      item.quality += 2 if item.sell_in > 5 && item.sell_in <= 10
+      item.quality += 3 if item.sell_in > 0 && item.sell_in <= 5
       item.quality = 0 if item.sell_in <= 0
       item.sell_in -= 1
     elsif item.name.include?("Conjured")

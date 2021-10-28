@@ -80,17 +80,17 @@ describe GildedRose do
       expect(items[0].quality).to eq 4
     end
 
-    # it "increases the quality value by 3 for Backstage passes with <= 5 days left" do
-    #   items = [Item.new("Backstage passes", 5, 2)]
-    #   GildedRose.new(items).update_quality()
-    #   expect(items[0].quality).to eq 5
-    # end
+    it "increases the quality value by 3 for Backstage passes with <= 5 days left" do
+      items = [Item.new("Backstage passes", 5, 2)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 5
+    end
 
-    # it "drops the quality of Backstage passes with < 0 days left to 0" do
-    #   items = [Item.new("Backstage passes", 0, 5)]
-    #   GildedRose.new(items).update_quality()
-    #   expect(items[0].quality).to eq 0
-    # end
+    it "drops the quality of Backstage passes with < 0 days left to 0" do
+      items = [Item.new("Backstage passes", 0, 5)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 0
+    end
 
     # it "Conjured items drop in quality by 2" do
     #   items = [Item.new("Conjured", 1, 2)]
