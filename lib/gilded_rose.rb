@@ -7,8 +7,7 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      Update.standard_update(item) if standard_item?(item)
-      Update.update_exception(item)
+      standard_item?(item) ? Update.standard_update(item) : Update.update_exception(item)
     end
   end
 
@@ -47,6 +46,6 @@ class Update
     elsif item.name.include?("Conjured")
       puts "Conjure: #{item.name}"
     end
-    item.quality = 50 if item.quality > 50
+    item.quality = 50 if item.quality > 50 unless item.name.include?("Sulfuras")
   end
 end
