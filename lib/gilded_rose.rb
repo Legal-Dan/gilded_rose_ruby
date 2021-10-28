@@ -42,7 +42,8 @@ class Update
       item.sell_in -= 1
       item.quality += 1      
     elsif item.name.include?("Backstage pass")
-      item.sell_in > 0 ? item.quality += 1 : item.quality = 0
+      item.sell_in > 10 ? item.quality += 1 : item.quality += 2
+      item.quality = 0 if item.sell_in <= 0
       item.sell_in -= 1
     elsif item.name.include?("Conjured")
       puts "Conjure: #{item.name}"

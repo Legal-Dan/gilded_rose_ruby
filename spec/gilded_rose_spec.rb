@@ -74,11 +74,11 @@ describe GildedRose do
       expect(items[0].quality).to eq 3
     end
 
-    # it "increases the quality value by 2 for Backstage passes with <= 10 days left" do
-    #   items = [Item.new("Backstage passes", 9, 2)]
-    #   GildedRose.new(items).update_quality()
-    #   expect(items[0].quality).to eq 4
-    # end
+    it "increases the quality value by 2 for Backstage passes with <= 10 days left" do
+      items = [Item.new("Backstage passes", 9, 2)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 4
+    end
 
     # it "increases the quality value by 3 for Backstage passes with <= 5 days left" do
     #   items = [Item.new("Backstage passes", 5, 2)]
